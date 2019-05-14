@@ -15,7 +15,7 @@ var loginctrl = require("./controllers/loginctrl.js");
 //设置模板引擎
 app.set("view engine", "ejs");
 
-//使用session，这里的语句照抄，不要求懂：
+//使用session
 app.set('trust proxy', 1);
 app.use(session({
     resave: false,
@@ -27,25 +27,6 @@ app.use(session({
 //数据库
 mongoose.connect("mongodb://localhost/carsystem");
 var Car = require("./models/Car");
-
-app.get("/regist", registctrl.showRegist);
-app.post("/regist", registctrl.doRegist);
-app.checkout("/regist", registctrl.checkUserExist);
-app.get("/login", loginctrl.showLogin);
-app.post("/login", loginctrl.doLogin);
-
-// app.get("/", function (req, res, next) {
-//     var login = req.session.login;
-//     if (!login) {
-//         res.redirect("/login");
-//     } else {
-//         next();
-//     }
-// });
-
-// app.get("/login", function (req, res) {
-//     res.send("请登录,<input type='text'/>")
-// });
 
 
 //静态化
